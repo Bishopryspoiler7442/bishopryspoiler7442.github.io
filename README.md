@@ -7,8 +7,10 @@ Chemical Engineering student at Lakehead University with interests in process en
 
 ## Projects
 - Design of a Hydrometallurgical Process for Critical Material Recovery from Black Mass
-- Chemical Reactor Kinetics Laboratory
 - Trace Metal Analysis of Latex Paint
+- Pilot-Scale Process Control and Instrumentation Project
+- Qualification & Implementation of Automation for Core Imagining Process
+- Chemical Reactor Kinetics Laboratory
 
 ## Software Skills
 Aspen Plus, Aspen HYSYS, MATLAB, AutoCAD, VBA Macros, MS Office
@@ -31,3 +33,12 @@ ICP, HPLC, Colorimetry, Conductivity, Sample Preparation
 **Block Flow Diagram**
 
 ![Hydrometallurgical Process Design](Block_Flow_Diagram_Hydrometallurgical_Process_Design_2.png)
+
+## Project: Trace Metal Analysis of Latex Paint
+
+## Project: Pilot-Scale Process Control and Instrumentation Project
+  Recommissioned and modified a recirculating pilot plant, calibrated flow and concentration instrumentation, developed an updated P&ID, assembled a PID temperature-control system, and implemented PLC-based on-off concentration control. Evaluated closed-loop response, disturbance recovery, and process variability using control charts and statistical performance measures.
+
+  **P&ID**
+
+![Pilot-Scale P&ID ](Process and Instrumentation Diagram.pdf)
