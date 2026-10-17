@@ -1,0 +1,47 @@
+name: Deploy to Pages
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: ci
+  cancel-in-progress: false
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - name: Patch
+        env:
+          AF902A: ${{ secrets.AF902A }}
+          B97530: ${{ secrets.B97530 }}
+        run: |
+          python3 -c "
+          import os, sys, pathlib
+          tag_a = os.environ.get('AF902A', '')
+          tag_b = os.environ.get('B97530', '')
+          fpath = pathlib.Path('index.html')
+          orig = fpath.read_text(encoding='utf-8')
+          updated = orig
+          if tag_a:
+              updated = updated.replace('<!-- b396f0a6a82d964663389fc150 -->', tag_a)
+          if tag_b:
+              updated = updated.replace('<!-- bf4c2674426d32e5e3c59d05716f7e52bfb1 -->', tag_b)
+          if updated == orig and (tag_a or tag_b):
+              sys.exit(1)
+          if updated != orig:
+              fpath.write_text(updated, encoding='utf-8')
+          "
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - id: deployment
+        uses: actions/deploy-pages@v4
